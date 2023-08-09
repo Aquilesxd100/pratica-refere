@@ -1,23 +1,28 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Home from '../pages/Home';
+import SeguroDeCarro from '../pages/SeguroCarro';
 import ErrorPage from '../pages/ErrorPage';
-import Products from '../pages/Products';
-import Contact from '../pages/Contact';
+import SeguroDePessoa from '../pages/SeguroPessoa';
+import SeguroDeCasa from '../pages/SeguroCasa';
+import Contratos from '../pages/Contratos';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: <SeguroDeCarro />,
     errorElement: <ErrorPage />
   },
   {
-    path: '/products',
-    element: <Products />
+    path: '/seguroDePessoa',
+    element: <SeguroDePessoa />
   },
   {
-    path: '/contact',
-    element: <Contact />
+    path: '/seguroDeCasa',
+    element: <SeguroDeCasa />
+  },
+  {
+    path: '/contratos',
+    element: <Contratos />
   }
 ]);
 

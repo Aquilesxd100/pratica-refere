@@ -1,12 +1,12 @@
 import React from 'react';
 import DefaultLayout from '../config/layout/DefaultLayout';
 
-const Contact: React.FC = () => {
+const SeguroDeCasa: React.FC = () => {
   return (
     <DefaultLayout>
-      <h1>Contacto</h1>
+      <h1>Seguro de Casa</h1>
     </DefaultLayout>
   );
 };
 
-export default Contact;
+export default SeguroDeCasa;

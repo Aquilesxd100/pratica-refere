@@ -6,17 +6,15 @@ import GlobalStyle from './config/GlobalStyle';
 import RoutesApp from './routes/RoutesApp';
 
 export const ThemeContext = createContext<{
-  data: Array<any> | null;
+  data: Array<any>;
   setData: (newValue: any) => void;
 }>({
-  data: null,
+  data: [],
   setData: () => undefined
 });
 
 function App() {
   const [data, setData] = useState<Array<any>>([]);
-
-  console.log('DATA ', data);
 
   return (
     <ThemeContext.Provider value={{ data, setData }}>

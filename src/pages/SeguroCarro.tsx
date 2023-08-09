@@ -6,29 +6,37 @@ import ButtonStyled from '../components/ButtonStyled';
 import { ThemeContext } from '../App';
 
 interface DataCarro {
+  contrato: string;
   modelo: string;
   ano: string;
   cor: string;
   placa: string;
 }
 
-const Home: React.FC = () => {
+const SeguroDeCarro: React.FC = () => {
   const { data, setData } = useContext(ThemeContext);
 
-  const [dataCarro, setDataCarro] = useState<DataCarro>({ modelo: '', ano: '', placa: '', cor: '' });
+  const [dataCarro, setDataCarro] = useState<DataCarro>({
+    contrato: 'Seguro de Automóvel',
+    modelo: '',
+    ano: '',
+    placa: '',
+    cor: ''
+  });
 
   const submitHandler = (e: any) => {
     e.preventDefault();
     if (dataCarro.ano === '' || dataCarro.modelo === '' || dataCarro.placa === '' || dataCarro.cor === '') {
       return;
     }
+
     setData([...data, dataCarro]);
-    setDataCarro({ modelo: '', ano: '', placa: '', cor: '' });
+    setDataCarro({ contrato: 'Seguro de Automóvel', modelo: '', ano: '', placa: '', cor: '' });
   };
 
   return (
     <DefaultLayout>
-      <h1>Home</h1>
+      <h1>Seguro de Carro</h1>
       <FormStyled onSubmit={submitHandler}>
         <InputStyled
           placeholder="Modelo"
@@ -64,4 +72,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default SeguroDeCarro;
