@@ -5,18 +5,25 @@ import GlobalStyle from './config/GlobalStyle';
 
 import RoutesApp from './routes/RoutesApp';
 
+export const ThemeContext = createContext<{
+  data: Array<any> | null;
+  setData: (newValue: any) => void;
+}>({
+  data: null,
+  setData: () => undefined
+});
+
 function App() {
-    const [data, setData] = useState<any>(null);
-    const test = (e) => {
-        setData(..e)
-    }
-    const ThemeContext = createContext(null);
+  const [data, setData] = useState<Array<any>>([]);
+
+  console.log('DATA ', data);
+
   return (
-    <ThemeContext.Provider value={data}>
-        <DefaultTheme>
+    <ThemeContext.Provider value={{ data, setData }}>
+      <DefaultTheme>
         <RoutesApp />
         <GlobalStyle />
-        </DefaultTheme>
+      </DefaultTheme>
     </ThemeContext.Provider>
   );
 }

@@ -11,7 +11,9 @@ const Navbar: React.FC<NavbarProps> = ({ navigation }) => {
   return (
     <NavBarStyled>
       {navigation.map(item => (
-        <Link to={item.url}>{item.label}</Link>
+        <Link key={item.url} to={item.url}>
+          {item.label}
+        </Link>
       ))}
     </NavBarStyled>
   );
