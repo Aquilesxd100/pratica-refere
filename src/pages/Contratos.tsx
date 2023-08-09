@@ -1,9 +1,10 @@
 import { ThemeContext } from '../App';
+import FieldsetStyled from '../components/FieldsetStyled';
 import DefaultLayout from '../config/layout/DefaultLayout';
 import { useContext } from 'react';
 
 const Contratos = () => {
-  const { data, setData } = useContext(ThemeContext);
+  const { data } = useContext(ThemeContext);
 
   return (
     <>
@@ -32,6 +33,31 @@ const Contratos = () => {
                     <li>Idade: {contrato.idade}</li>
                     <li>Gênero: {contrato.genero}</li>
                     <li>CPF: {contrato.cpf}</li>
+                  </div>
+                );
+              }
+              if (contrato.contrato === 'Seguro de Residencia') {
+                const tiposCobertura = ["Incêndio", "Enchente", "Vendaval", "Terremoto"];
+                const arrayCoberturas = [];
+                for (let cobertura in contrato.coberturas) {
+                    arrayCoberturas.push(contrato.coberturas[cobertura]);
+                }
+                return (
+                  <div style={{padding: "30px"}}>
+                    <h4>{contrato.contrato}</h4>
+                    <li>Area do Terreno: {contrato.areaTerreno}</li>
+                    <li>Valor: R$ {contrato.valor+",00"}</li>
+                    <FieldsetStyled>
+                        <legend>Coberturas</legend>
+                        <ul>
+                            {!arrayCoberturas.some((cobertura:any) => cobertura) && (<p>Nenhuma cobertura selecionada</p>)}
+                            {arrayCoberturas.map((cobertura : boolean, index: number) => {
+                                if (cobertura){
+                                    return (<li style={{listStyle: "none"}}>- { tiposCobertura[index]}</li>)
+                                }
+                            })}
+                        </ul>
+                    </FieldsetStyled>
                   </div>
                 );
               }
