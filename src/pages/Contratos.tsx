@@ -1,16 +1,18 @@
-import { ThemeContext } from '../App';
+
 import FieldsetStyled from '../components/FieldsetStyled';
 import InputStyled from '../components/InputStyled';
 import DefaultLayout from '../config/layout/DefaultLayout';
 import { useContext, useState } from 'react';
+import { DataContext } from '../contexts/DataContext';
 
 const Contratos = () => {
-  const { data, setData } = useContext(ThemeContext);
+  const { data, setData } = useContext(DataContext);
 
   const [search, setSearch] = useState('');
 
   const contratos =
     search.length > 0 ? data.filter(contrato => contrato.contrato.toUpperCase().includes(search.toUpperCase())) : [];
+    console.log(data)
 
   return (
     <>
@@ -28,10 +30,10 @@ const Contratos = () => {
           {!data.length ? (
             <h3>Nenhum seguro feito</h3>
           ) : search.length > 0 ? (
-            contratos.map(contrato => {
+            contratos.map((contrato, index) => {
               if (contrato.contrato === 'Seguro de Automóvel') {
                 return (
-                  <div>
+                  <div key={"seguro-automovel"+index}>
                     <h4>{contrato.contrato}</h4>
                     <li>Molelo: {contrato.modelo}</li>
                     <li>Cor: {contrato.cor}</li>
@@ -42,7 +44,7 @@ const Contratos = () => {
               }
               if (contrato.contrato === 'Seguro de Pessoa') {
                 return (
-                  <div>
+                  <div key={"seguro-pessoa"+index}>
                     <h4>{contrato.contrato}</h4>
                     <li>Nome: {contrato.nome}</li>
                     <li>Idade: {contrato.idade}</li>
@@ -68,7 +70,7 @@ const Contratos = () => {
                             {!arrayCoberturas.some((cobertura:any) => cobertura) && (<p>Nenhuma cobertura selecionada</p>)}
                             {arrayCoberturas.map((cobertura : boolean, index: number) => {
                                 if (cobertura){
-                                    return (<li style={{listStyle: "none"}}>- { tiposCobertura[index]}</li>)
+                                    return (<li key={"tipo-cobertura-"+index} style={{listStyle: "none"}}>- { tiposCobertura[index]}</li>)
                                 }
                             })}
                         </ul>
@@ -78,10 +80,10 @@ const Contratos = () => {
               }
             })
           ) : (
-            data.map(contrato => {
+            data.map((contrato, index) => {
               if (contrato.contrato === 'Seguro de Automóvel') {
                 return (
-                  <div>
+                  <div key={"automovel-"+index}>
                     <h4>{contrato.contrato}</h4>
                     <li>Molelo: {contrato.modelo}</li>
                     <li>Cor: {contrato.cor}</li>
@@ -92,7 +94,7 @@ const Contratos = () => {
               }
               if (contrato.contrato === 'Seguro de Pessoa') {
                 return (
-                  <div>
+                  <div key={"pessoa-"+index}>
                     <h4>{contrato.contrato}</h4>
                     <li>Nome: {contrato.nome}</li>
                     <li>Idade: {contrato.idade}</li>
@@ -108,7 +110,7 @@ const Contratos = () => {
                     arrayCoberturas.push(contrato.coberturas[cobertura]);
                 }
                 return (
-                  <div style={{padding: "30px"}}>
+                  <div key={"residencia-"+index} style={{padding: "30px"}}>
                     <h4>{contrato.contrato}</h4>
                     <li>Area do Terreno: {contrato.areaTerreno}</li>
                     <li>Valor: R$ {contrato.valor+",00"}</li>
@@ -118,7 +120,7 @@ const Contratos = () => {
                             {!arrayCoberturas.some((cobertura:any) => cobertura) && (<p>Nenhuma cobertura selecionada</p>)}
                             {arrayCoberturas.map((cobertura : boolean, index: number) => {
                                 if (cobertura){
-                                    return (<li style={{listStyle: "none"}}>- { tiposCobertura[index]}</li>)
+                                    return (<li key={"lista-cobertura"+index} style={{listStyle: "none"}}>- { tiposCobertura[index]}</li>)
                                 }
                             })}
                         </ul>
