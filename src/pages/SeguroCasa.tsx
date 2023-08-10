@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import DefaultLayout from '../config/layout/DefaultLayout';
-import { ThemeContext } from '../App';
 import FormStyled from '../components/FormStyled';
 import InputStyled from '../components/InputStyled';
 import FieldsetStyled from '../components/FieldsetStyled';
 import ButtonStyled from '../components/ButtonStyled';
+import { DataContext } from '../contexts/DataContext';
 
 interface DataResidencia {
     contrato: string,
@@ -19,7 +19,7 @@ interface DataResidencia {
 }
 
 const SeguroDeCasa: React.FC = () => {
-    const { data, setData } = useContext(ThemeContext);
+    const { data, setData } = useContext(DataContext);
 
     const moldeDataResidencia = {
         contrato: 'Seguro de Residencia',

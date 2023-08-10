@@ -3,7 +3,7 @@ import DefaultLayout from '../config/layout/DefaultLayout';
 import FormStyled from '../components/FormStyled';
 import InputStyled from '../components/InputStyled';
 import ButtonStyled from '../components/ButtonStyled';
-import { ThemeContext } from '../App';
+import { DataContext } from '../contexts/DataContext';
 
 interface DataCarro {
   contrato: string;
@@ -14,7 +14,7 @@ interface DataCarro {
 }
 
 const SeguroDeCarro: React.FC = () => {
-  const { data, setData } = useContext(ThemeContext);
+  const { data, setData } = useContext(DataContext);
 
   const [dataCarro, setDataCarro] = useState<DataCarro>({
     contrato: 'Seguro de Automóvel',
