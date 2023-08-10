@@ -5,6 +5,9 @@ import ErrorPage from '../pages/ErrorPage';
 import SeguroDePessoa from '../pages/SeguroPessoa';
 import SeguroDeCasa from '../pages/SeguroCasa';
 import Contratos from '../pages/Contratos';
+import User from '../pages/User';
+import User2 from '../pages/User2';
+import UserProvider from '../contexts/UserContext';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +26,14 @@ const router = createBrowserRouter([
   {
     path: '/contratos',
     element: <Contratos />
+  },
+  {
+    path: '/user',
+    element: <UserProvider><User /></UserProvider>
+  },
+  {
+    path: '/user2',
+    element: <User2 />
   }
 ]);
 
